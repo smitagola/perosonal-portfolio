@@ -1,31 +1,49 @@
+import { useState, useEffect } from 'react';
 import './App.css';
-import Navbar from './Component/Navbar'; // Import Navbar
+import Navbar from './Component/Navbar';
 import About from './Pages/About';
 import Home from './Pages/Home';
-import TechSkill from './Pages/TechSkill';
-import ProjectPage from './Pages/ProjectPage'; // Import ProjectPage
-import Contect from './Pages/Contect';
+import ProjectPage from './Pages/ProjectPage';
+import Contact from './Pages/Contact'; // Fixed import name
 
 function App() {
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('section');
+      const scrollPosition = window.scrollY + 100;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          setActiveSection(section.id);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <>
-      <Navbar />
-      <div id="home">
+    <div className="App">
+      <Navbar activeSection={activeSection} />
+      <section id="home">
         <Home />
-      </div>
-      <div id="about">
+      </section>
+      <section id="about">
         <About />
-      </div>
-      <div id="tech-skills">
-        <TechSkill />
-      </div>
-      <div id="projects">
+      </section>
+      <section id="projects">
         <ProjectPage />
-      </div>
-      <div id="contect">
-        <Contect />
-      </div>
-    </>
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+    </div>
   );
 }
 

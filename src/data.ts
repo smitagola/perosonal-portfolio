@@ -6,12 +6,7 @@ import Git from "./img/skill/Git.png"
 import Java from "./img/skill/JAVA.png"
 import JS from "./img//skill/JS.png"
 import tailwind from "./img/skill/Tailwind.png"
-// import TS from "./img/skill/TS.png"
 import VS from "./img/skill/VS.png"
-import iot from "./img/iot.png"
-import ecom from "./img/E-commerce.jpg"
-import tiktak from "./img/tik-tak-toe.jpg"
-
 export const navs = [
     { id: 1, nav: 'Home', sectionId: 'home' },
     { id: 2, nav: 'About', sectionId: 'about' },
@@ -136,29 +131,35 @@ export interface Project {
     sectionId: string;
   }
   
-  export const sampleProjects: Project[] = [
-    {
-      imageSrc:`${tiktak}` , // Replace with actual image URL
-      title: 'tik-tak-toe',
-      description: 'it is a just a simple game which i have created with the react.js and use the state managment for two player game.',
-      githubLink: 'https://github.com/smitagola/tik-tak-toe',
-      deployLink: 'https://smit-tik-tak-toe.netlify.app/',
-      sectionId: 'tik-tak-toe'
-    },
-    {
-      imageSrc:`${ecom}`, // Replace with actual image URL
-      title: 'E-commersite',
-      description: 'it is and e-commerce site which devoped by me in this their is feature like listing the product , fliter product , search or manage user and order like that so many functionality is available in that .',
-      githubLink: 'https://github.com/smitagola/bookmart',
-      // deployLink: 'https://username.github.io/weather-app',
-      sectionId: 'weather-app'
-    },
-    {
-      imageSrc: `${iot}`, // Replace with actual image URL
-      title: 'Smart parking system',
-      description: 'it is project based on iot for managing a parking at complex area. it is acadmic project of 4th year.',
-      githubLink: 'https://github.com/smitagola/smart-parking-system',
-      sectionId: 'task-manager'
-    }
-  ];
+export const sampleProjects = [
+  {
+    sectionId: "project-1",
+    imageSrc: "/api/placeholder/400/250", // Replace with actual images
+    title: "Tic-Tac-Toe Game",
+    description: "A simple two-player game built with React.js and state management with smooth UI and responsive design.",
+    githubLink: "https://github.com/smitagola/tictactoe",
+    deployLink: "https://smitagola.github.io/tictactoe",
+    technologies: ["React", "JavaScript", "CSS", "State Management"]
+  },
+  {
+    sectionId: "project-2", 
+    imageSrc: "/api/placeholder/400/250",
+    title: "E-commerce Site",
+    description: "Full-featured e-commerce platform with product listing, filtering, search, and user management systems.",
+    githubLink: "https://github.com/smitagola/ecommerce",
+    deployLink: "https://smitagola.github.io/ecommerce",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB"]
+  },
+  {
+    sectionId: "project-3",
+    imageSrc: "/api/placeholder/400/250",
+    title: "Smart Parking System",
+    description: "IoT-based parking management system for complex areas with real-time monitoring and automation.",
+    githubLink: "https://github.com/smitagola/smart-parking",
+    deployLink: "https://smitagola.github.io/smart-parking", 
+    technologies: ["IoT", "JavaScript", "Hardware Integration", "API Development"]
+  }
+];
   
+
+export const aboutMe = " The Generator App is an online tool that helps you export ready-made templates that can work as your future website. It allows you to combine slides, panels, and other components and export them as a set of static files: HTML/CSS/JS."
