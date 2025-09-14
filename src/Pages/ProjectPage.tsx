@@ -54,7 +54,7 @@ const ProjectPage = () => {
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
 
-  const openModal = (projectId, index) => {
+  const openModal = (projectId:any, index:any) => {
     setActiveProject(projectId);
     setCurrentIndex(index);
   };
@@ -73,7 +73,7 @@ const ProjectPage = () => {
 
   // Close modal when clicking outside
   React.useEffect(() => {
-    const handleEscape = (e) => {
+    const handleEscape = (e:any) => {
       if (e.keyCode === 27) closeModal();
     };
     document.addEventListener('keydown', handleEscape);

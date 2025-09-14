@@ -5,6 +5,28 @@ import { typewriteString } from '../constans';
 import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
+  // Fallback function for image error with proper null checking
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = e.currentTarget;
+    target.style.display = 'none';
+    
+    const fallback = document.createElement('div');
+    fallback.className = 'w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl';
+    fallback.innerHTML = `
+      <div class="text-center text-slate-300">
+        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-purple-400 to-pink-600 rounded-full flex items-center justify-center">
+          <span class="text-white text-xl font-bold">{"</>"}</span>
+        </div>
+        <p class="text-sm">Developer Portfolio</p>
+      </div>
+    `;
+    
+    // Safe null check
+    if (target.parentNode) {
+      target.parentNode.appendChild(fallback);
+    }
+  };
+
   return (
     <section 
       id="home" 
@@ -63,28 +85,12 @@ const Home: React.FC = () => {
           <div className="relative">
             <div className="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-purple-500/20 to-pink-600/20 rounded-2xl flex items-center justify-center p-2 backdrop-blur-sm">
               <div className="w-full h-full bg-slate-800/80 rounded-xl overflow-hidden border-2 border-slate-700/50 flex items-center justify-center p-6">
+                {/* Alternative approach: Use a try-catch with a fallback div */}
                 <img
                   src="https://undraw.co/api/illustrations/developer-activity"
                   alt="Smit Ba - Developer"
                   className="w-full h-full object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    const fallback = document.createElement('div');
-                    fallback.className = 'w-full h-full flex items-center justify-center';
-                    fallback.innerHTML = `
-                      <svg class="w-full h-full" viewBox="0 0 400 400">
-                        <circle cx="200" cy="200" r="180" fill="#1E293B" stroke="#7E22CE"/>
-                        <rect x="120" y="150" width="160" height="100" rx="10" fill="#374151" stroke="#EC4899"/>
-                        <rect x="140" y="170" width="40" height="10" rx="2" fill="#7E22CE"/>
-                        <rect x="190" y="170" width="40" height="10" rx="2" fill="#EC4899"/>
-                        <rect x="140" y="190" width="80" height="40" rx="5" fill="#4B5563"/>
-                        <circle cx="260" cy="180" r="8" fill="#10B981"/>
-                        <circle cx="260" cy="200" r="8" fill="#F59E0B"/>
-                        <circle cx="260" cy="220" r="8" fill="#EF4444"/>
-                      </svg>
-                    `;
-                    e.currentTarget.parentNode.appendChild(fallback);
-                  }}
+                  onError={handleImageError} // Use the safe function
                 />
               </div>
             </div>
